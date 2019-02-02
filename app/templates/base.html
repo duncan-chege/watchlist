@@ -1,0 +1,8 @@
+<!-- Flask-Bootstrap contains its own base.html which has defined blocks that we can refer to and add our own data. -->
+
+{% extends 'bootstrap/base.html'%}
+
+<!-- Navblock -->
+{% block navbar %}     
+    {% include 'navbar.html' %}      <!--includes control block to include our _navbar.html_ file to that section of the base.html template.-->
+{% endblock %}      <!--when you start a block you should end it-->

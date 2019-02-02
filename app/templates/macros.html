@@ -1,0 +1,29 @@
+{% macro displayMovieList(movie_list) %}
+
+    {% for movie in movie_list %}
+     <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+        <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
+        <li class="text-center">
+            <a href="/movie/{{movie.id}}">
+
+  <!-- change the movie title variable block by adding the truncate filter . A filter is passed into a variable block
+ to modify the content of of the block and are added after the variable with a pipe | character. -->
+
+ <!-- truncate filter shortens a variable size according to the characters we add to its parameters. -->
+                {{ movie.title|truncate(10)}}</a>
+        </li>
+    </div>
+    {% endfor %}
+
+{% endmacro %}
+
+<!--Displaying reviews macro-->
+{% macro displayReviews(review_list) %}     <!--new macro that takes in a list of reviews-->
+    {% for review in review_list %}     <!--Loops thru the list-->
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
+        <h2> {{ review.title }} </h2>       
+        <p> {{ review.review | truncate(30) }} </p>
+    
+    </div>
+    {% endfor %}
+{% endmacro %}
