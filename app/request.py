@@ -1,15 +1,19 @@
 #Getting data int our API
-from app import app     #import the flask application instance
 import urllib.request,json     #will help us create a connection to our API URL and send a request and json modules that will format the JSON response to a Python dictionary
-from .models import movie
+from .models import Movie
 
-Movie = movie.Movie
+
 
 #Getting api key
-api_key = app.config['MOVIE_API_KEY']
+api_key = None
 
 #Getting the movie base url
-base_url= app.config["MOVIE_API_BASE_URL"]
+base_url= None
+
+def configure_request(app):
+    global api_key,base_url
+    api_key = app.config['MOVIE_API_KEY']
+    base_url = app.config['MOVIE_API_BASE_URL']
 
 def get_movies(category):
     '''
@@ -56,7 +60,7 @@ def process_results(movie_list):
     return movie_results
 
 def get_movie(id):      #function that takes in a movie id and returns a movie object
-    get_movie_details_url = base_url.format(id,api_key)     #create a get_movie_details URL by formatting the base URL with the idand API key
+    get_movie_details_url = base_url.format(id,api_key)     #create a get_movie_details URL by formatting the base URL with the id and API key
 
     with urllib.request.urlopen(get_movie_details_url) as url:      #create a request
         movie_details_data = url.read()                     

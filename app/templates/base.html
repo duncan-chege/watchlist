@@ -6,3 +6,12 @@
 {% block navbar %}     
     {% include 'navbar.html' %}      <!--includes control block to include our _navbar.html_ file to that section of the base.html template.-->
 {% endblock %}      <!--when you start a block you should end it-->
+
+{%block styles %}
+  {{super()}}      <!--maintains any code that was defined in that code block inside our bootstrap's base.html file-->
+
+  <!--Importing the simple mde css and js files  -->
+  {{ simplemde.css}}
+  {{ simplemde.js }}
+
+{% endblock %}

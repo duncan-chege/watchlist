@@ -1,8 +1,7 @@
 from flask import render_template
-from app import app
+from . import main
 
-
-@app.errorhandler(404)       #new decorator app.errorhandler() passes in the error we receive.
+@main.errorhandler(404)       #new decorator app.errorhandler() passes in the error we receive.
 def four_Ow_four(error):        #created a view function
     '''    
     Function to render the 404 error page
